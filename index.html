@@ -1,0 +1,551 @@
+@@ -0,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Hiremath Hospitals Digital Marketing Flowchart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles for the body and overall container */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+            color: #334155; /* Darker gray text */
+            line-height: 1.6;
+        }
+        /* Main container for the entire flowchart */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem; /* Space between sections */
+            padding: 2rem 1rem; /* Padding around the content */
+            max-width: 1200px; /* Max width for desktop views */
+            margin: 0 auto; /* Center the container */
+        }
+        /* Styling for each major section (Current State, Future Vision) */
+        .flow-section {
+            background-color: #ffffff; /* White background for sections */
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            padding: 2rem; /* Inner padding */
+            width: 100%; /* Full width within container */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+        /* Titles for main sections */
+        .flow-title {
+            font-size: 2rem; /* Larger font size */
+            font-weight: 700; /* Bold */
+            color: #1e293b; /* Very dark blue-gray */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        /* Subtitles for individual agency/bot flows */
+        .flow-subtitle {
+            font-size: 1.5rem; /* Medium font size */
+            font-weight: 600; /* Semi-bold */
+            color: #334155;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0; /* Subtle separator */
+            padding-bottom: 0.75rem;
+        }
+        /* Wrapper for individual flowcharts */
+        .flowchart-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* Space between nodes */
+            padding: 1.5rem;
+            border: 1px dashed #cbd5e1; /* Dashed border for visual grouping */
+            border-radius: 0.625rem;
+            margin-bottom: 2rem; /* Space between different agency/bot flowcharts */
+        }
+        /* Styling for individual nodes in the flowchart */
+        .flow-node {
+            background-color: #e2e8f0; /* Light blue-gray */
+            border: 1px solid #94a3b8; /* Medium blue-gray border */
+            border-radius: 0.5rem; /* Rounded corners */
+            padding: 0.75rem 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #334155;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            min-width: 220px; /* Ensure nodes are wide enough */
+            max-width: 90%; /* Prevent overflow on small screens */
+            word-wrap: break-word; /* Break long words */
+        }
+        /* Specific styling for 'Start' nodes */
+        .flow-node.start {
+            background-color: #d1fae5; /* Light green */
+            border-color: #34d399; /* Green border */
+            color: #065f46; /* Dark green text */
+            font-weight: 600;
+        }
+        /* Specific styling for 'End' nodes */
+        .flow-node.end {
+            background-color: #fee2e2; /* Light red */
+            border-color: #ef4444; /* Red border */
+            color: #991b1b; /* Dark red text */
+            font-weight: 600;
+        }
+        /* Specific styling for 'Decision' nodes (diamond shape) */
+        .flow-node.decision {
+            background-color: #fef9c3; /* Light yellow */
+            border-color: #facc15; /* Yellow border */
+            color: #a16207; /* Dark yellow text */
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Diamond shape */
+            padding: 1rem 1.5rem; /* Adjust padding for diamond shape */
+            min-width: 180px;
+        }
+        /* Styling for arrows between nodes */
+        .flow-arrow {
+            font-size: 2rem; /* Larger arrow size */
+            color: #64748b; /* Gray arrow color */
+            margin: 0.25rem 0;
+            line-height: 1; /* Prevent extra line height */
+        }
+        /* Labels for decision branches */
+        .flow-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: -0.5rem;
+            margin-bottom: 0.25rem;
+            font-style: italic;
+        }
+        /* Path for a sequence of nodes */
+        .flow-path {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem; /* Smaller gap within a path */
+        }
+        /* For splitting paths (e.g., Yes/No for decisions) */
+        .flow-split {
+            display: flex;
+            flex-direction: column; /* Stack branches vertically on small screens */
+            justify-content: center;
+            width: 100%;
+            gap: 1.5rem; /* Space between branches */
+            margin-top: 1rem;
+        }
+        /* Individual branch of a split path */
+        .flow-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            border-left: 2px dashed #94a3b8; /* Vertical dashed line for branches */
+            padding-left: 1.5rem; /* Indent branch content */
+        }
+        /* List items within nodes (e.g., WhatsApp bot steps) */
+        .flow-node ul {
+            text-align: left;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            list-style-type: disc;
+        }
+        .flow-node ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Responsive adjustments for tablets and desktops */
+        @media (min-width: 768px) {
+            .flow-container {
+                padding: 3rem 2rem;
+            }
+            .flow-title {
+                font-size: 2.5rem;
+            }
+            .flow-subtitle {
+                font-size: 1.75rem;
+            }
+            .flowchart-wrapper {
+                padding: 2rem;
+            }
+            .flow-node {
+                min-width: 250px;
+                font-size: 1rem;
+            }
+            .flow-arrow {
+                font-size: 2.5rem;
+            }
+            /* Horizontal layout for splits on larger screens */
+            .flow-split {
+                flex-direction: row; /* Arrange branches horizontally */
+                align-items: flex-start; /* Align tops of branches */
+                justify-content: space-around;
+            }
+            .flow-branch {
+                border-left: none; /* Remove vertical line */
+                border-top: 2px dashed #94a3b8; /* Add horizontal line */
+                padding-left: 0;
+                padding-top: 1.5rem; /* Padding above content */
+                flex: 1; /* Allow branches to grow */
+                margin: 0 1rem; /* Space between horizontal branches */
+            }
+            /* Adjust arrow for horizontal splits */
+            .flow-split .flow-arrow {
+                 transform: rotate(90deg); /* Rotate arrow for horizontal flow */
+                 margin: 0 0.5rem;
+            }
+            .flow-split .flow-label {
+                position: absolute;
+                top: -1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+            }
+            /* Specific horizontal path for the Future Vision section */
+            .flow-path.horizontal-lg {
+                flex-direction: row;
+                flex-wrap: wrap; /* Allow wrapping if too many nodes */
+                justify-content: center;
+                gap: 1rem;
+            }
+            .flow-path.horizontal-lg .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0 0.5rem;
+            }
+        }
+
+        /* Specific adjustments for very large screens or specific complex flows */
+        @media (min-width: 1024px) {
+            .flow-node {
+                min-width: 280px;
+            }
+            .flow-path.horizontal-lg .flow-node {
+                 min-width: 200px; /* Smaller nodes for more horizontal space */
+            }
+            .flow-path.horizontal-lg .flow-arrow {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Dr. Hiremath Hospitals</h1>
+        <h2 >Digital Marketing & Sales Flowcharts</h2>
+        <h3 >by Thilak</h3>
+
+
+        <div class="flow-section">
+            <h2 class="flow-title">Current State Flow</h2>
+            <p class="text-center text-gray-600 mb-6">Fragmented efforts across agencies with distinct lead handling processes.</p>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">1. Xbrand (Dental - High-Ticket)</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Start: Xbrand Initiates Marketing Campaign</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Channel: Facebook Ads (Dr Hiremath Hospitals FB Acc, Xbrand Page)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Patient Sees Ads & Clicks</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Lands on: drvishwannathhiremath.com</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Lead Capture (Form/DM)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Xbrand WhatsApp Automation (Welcome, Language Selection, Location/Links, Patient Exp/Expertise, Links to Social media accounts)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Sales Handoff: Gowri (Sales Manager)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Sales Call</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node end">Conversion</div>
+                </div>
+            </div>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">2. HTA (Hair Transplant & Minimal FMI)</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Start: HTA Initiates Marketing Campaign</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Channel: Facebook Ads (Dr Hiremath Hospitals FB Acc, HTA Page)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Patient Sees Ads & Clicks</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Lands on: drhiremathhospitals.in (HTA Marketing Funnel)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node decision">Patient Action: Fill Form OR Click WhatsApp Button?</div>
+                    <div class="flow-split md:flex-row">
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If Fill Form</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Lead Data to Google Sheet (Manual)</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Sales Handoff: Asha (Sales Team)</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Sales Call</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node end">Conversion</div>
+                        </div>
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If Click WhatsApp Button</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Directs to Hospital Reception WhatsApp (Unmanaged)</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node end">Lead Drop-off (Lost Opportunity)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">3. AppAdd (Website Management)</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Start: AppAdd Role</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Manages Websites: drhiremathhospitals.in, drhiremathgobal.com, agri.com, foundation.com, etc. </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node end">Ongoing Website Maintenance</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h2 class="flow-title">Proposed Future State Flow</h2>
+            <p class="text-center text-gray-600 mb-6">Consolidated WhatsApp automation and centralized digital channels for improved efficiency.</p>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">Consolidated & Centralized Marketing & Sales</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Start: Marketing Campaign (Xbrand / HTA)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Patient Sees Ads & Clicks (Google/Facebook)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Lands on Relevant Website (drvishwannathhiremath.com OR drhiremathhospitals.in)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Lead Capture (Form / Direct WhatsApp Link)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">New Partnership: MBG Cards WhatsApp Automation</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Integration: MBG Cards Automation & AppAdd's WhatsApp Efforts</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Integration: HTA Leads Directed to Unified WhatsApp Automation</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Unified WhatsApp Automation Flow:
+                        <ul class="list-disc list-inside text-left text-sm mt-2">
+                            <li>Welcome Message</li>
+                            <li>Language Selection</li>
+                            <li>Location & Links (to Karthik's New YouTube, Insta, Centralized WhatsApp)</li>
+                            <li>Patient Experience & Expertise Info</li>
+                            <li>Intelligent Lead Nurturing & Qualification</li>
+                        </ul>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Sales Handoff (Unified): To Gowri (Dental) OR Asha (Hair/Minimal FMI)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Sales Call</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node end">Conversion</div>
+                </div>
+                <div class="flow-node mt-4">Karthik's Role: Establishes/Owns Centralized YouTube, Instagram, WhatsApp Channels (Integrated across all relevant automations)</div>
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h2 class="flow-title">Future Vision: Advanced Digital Engagement</h2>
+            <p class="text-center text-gray-600 mb-6">Highly sophisticated and integrated strategy with advanced automation and a unified patient journey.</p>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">1. Xbrand WhatsApp Bot (Dedicated for High-Ticket Dental)</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Trigger: Ad Click (drvishwannathhiremath.com) / Direct WhatsApp Message</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Step 1: Welcome & Initial Qualification
+                        <ul class="list-disc list-inside text-left text-sm mt-2">
+                            <li>"Hello [Patient Name]..."</li>
+                            <li>Options: "Interested in implants", "General query", "Book appointment"</li>
+                        </ul>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node decision">Patient Selects Option</div>
+                    <div class="flow-split md:flex-row">
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If "Interested in implants"</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Step 2a: Info Gathering & Personalized Content
+                                <ul class="list-disc list-inside text-left text-sm mt-2">
+                                    <li>Previous consultations? (Yes/No/Unsure)</li>
+                                    <li>Testimonials/Video? (Yes/No)</li>
+                                    <li>Links to YouTube, Website, Instagram</li>
+                                    <li>Offer free initial consultation? (Yes/No)</li>
+                                </ul>
+                            </div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node decision">Patient Wants Consultation?</div>
+                            <div class="flow-split md:flex-row">
+                                <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                                    <div class="flow-label">If Yes</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node">Step 4: Appointment Booking & Confirmation (Go to shared booking flow)</div>
+                                </div>
+                                <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                                    <div class="flow-label">If No / Later</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node">Step 3: Pre-Consultation Nurturing (Automated follow-ups: success stories, doctor profiles, benefits, booking link)</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node end">Ongoing Nurturing / Potential Future Booking</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If "General query"</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Step 2b: General Query Handling
+                                <ul class="list-disc list-inside text-left text-sm mt-2">
+                                    <li>Briefly describe query</li>
+                                    <li>Provide links to general FAQs / Connect with specialist</li>
+                                </ul>
+                            </div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node end">Query Resolved / Manual Handoff if complex</div>
+                        </div>
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If "Book appointment"</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Step 2c: Direct Appointment Inquiry (Go to shared booking flow)</div>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Shared Appointment Booking Flow (for Xbrand)
+                        <ul class="list-disc list-inside text-left text-sm mt-2">
+                            <li>"Preferred date/time range?"</li>
+                            <li>Bot checks real-time calendar (CRM/Scheduling integration)</li>
+                            <li>Patient selects date/time</li>
+                            <li>Bot confirms appointment, sends calendar invite, pre-app instructions</li>
+                        </ul>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Step 5: Sales Handoff (for Complex Cases/Direct Booking) to Gowri (Sales Manager)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node end">Appointment Booked / Lead Handed Off</div>
+                </div>
+            </div>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">2. HTA/AppAdd/MBG Cards Unified WhatsApp Bot (Hair Transplant & Minimal FMI)</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Trigger: Ad Click (drhiremathhospitals.in) / Direct WhatsApp Message / AppAdd Website</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Step 1: Welcome & Service Selection
+                        <ul class="list-disc list-inside text-left text-sm mt-2">
+                            <li>"Hi there! Welcome to Dr. Hiremath Hospitals."</li>
+                            <li>Options: "Hair Transplant", "Minimal FMI", "Other services/General query"</li>
+                        </ul>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node decision">Patient Selects Service</div>
+                    <div class="flow-split md:flex-row">
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If "Hair Transplant"</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Step 2a: Hair Transplant Info & Qualification
+                                <ul class="list-disc list-inside text-left text-sm mt-2">
+                                    <li>Learn techniques, before-after, cost estimate?</li>
+                                    <li>Links to relevant content (website, Karthik's channels)</li>
+                                    <li>Optional: Share picture for estimate</li>
+                                    <li>Offer free consultation? (Yes/No)</li>
+                                </ul>
+                            </div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node decision">Patient Wants Consultation?</div>
+                            <div class="flow-split md:flex-row">
+                                <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                                    <div class="flow-label">If Yes</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node">Step 3: Consultation Scheduling (Go to shared booking flow)</div>
+                                </div>
+                                <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                                    <div class="flow-label">If No / Later</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node end">Ongoing Nurturing / Info Provided</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If "Minimal FMI"</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Step 2b: Minimal FMI Info & Qualification
+                                <ul class="list-disc list-inside text-left text-sm mt-2">
+                                    <li>Explore options for missing teeth / full rehabilitation?</li>
+                                    <li>Info on benefits, links to pages</li>
+                                    <li>Offer consultation? (Yes/No)</li>
+                                </ul>
+                            </div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node decision">Patient Wants Consultation?</div>
+                            <div class="flow-split md:flex-row">
+                                <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                                    <div class="flow-label">If Yes</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node">Step 3: Consultation Scheduling (Go to shared booking flow)</div>
+                                </div>
+                                <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                                    <div class="flow-label">If No / Later</div>
+                                    <div class="flow-arrow">&#8595;</div>
+                                    <div class="flow-node end">Ongoing Nurturing / Info Provided</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If "Other services/General query"</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Step 2c: General Query Handling
+                                <ul class="list-disc list-inside text-left text-sm mt-2">
+                                    <li>Specify query</li>
+                                    <li>Bot answers / directs to general info</li>
+                                </ul>
+                            </div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node end">Query Resolved / Manual Handoff if complex</div>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Shared Appointment Booking Flow (for HTA/AppAdd/MBG)
+                        <ul class="list-disc list-inside text-left text-sm mt-2">
+                            <li>"Preferred date/time?"</li>
+                            <li>Bot checks real-time calendar (CRM/Scheduling integration)</li>
+                            <li>Patient selects date/time</li>
+                            <li>Bot confirms appointment, sends calendar invite, pre-app instructions</li>
+                        </ul>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Step 4: Sales Handoff (for Complex Cases/Direct Booking) to Asha (Sales Team)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node end">Appointment Booked / Lead Handed Off</div>
+                </div>
+            </div>
+
+            <div class="flowchart-wrapper">
+                <h3 class="flow-subtitle">3. Messenger Bot Integration</h3>
+                <div class="flow-path">
+                    <div class="flow-node start">Trigger: Patient Messages on Facebook Messenger</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node">Initial Qualification & Info Sharing (Mirrors WhatsApp Bot's early steps: Welcome, Service Selection, FAQs)</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-node decision">Detailed Query / Appointment Booking Request?</div>
+                    <div class="flow-split md:flex-row">
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If Yes</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node">Handoff: Directs Patient to Unified WhatsApp Channel OR Booking Link</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node end">Seamless Transition to WhatsApp/Booking System</div>
+                        </div>
+                        <div class="flow-branch md:border-t md:border-l-0 md:pt-4 md:pl-0">
+                            <div class="flow-label">If No (Info Only)</div>
+                            <div class="flow-arrow">&#8595;</div>
+                            <div class="flow-node end">Query Resolved / Information Provided</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
